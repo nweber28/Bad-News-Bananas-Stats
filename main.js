@@ -19,6 +19,7 @@ for(let i = 0; i < btns.length; i++){
     btns[i].onclick = function() {
         let modal = document.getElementById(this.getAttribute('data-target'));
         modal.style.display = "block";
+        console.log("anchor clicked")
     }
 }
 

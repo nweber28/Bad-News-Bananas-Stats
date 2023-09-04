@@ -23,7 +23,10 @@ function append_json(data) {
     aTag.setAttribute("class", "player-link");
     aTag.setAttribute("data-target", "modal" + object.Player.replace(/\s+/g, ''));
     aTag.textContent = object.Player;
-    console.log(aTag);
+    aTag.addEventListener("click", function(event) {
+      // Your click event handling code goes here
+      console.log("Anchor clicked!"); // Replace with your actual code
+    });
 
     var tdTest = document.createElement("td");
     tdTest.appendChild(aTag);
@@ -78,3 +81,19 @@ function append_json(data) {
     table.appendChild(tr);
   });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Add a click event listener to the document
+  document.addEventListener("click", function (event) {
+    // Check if the clicked element has the class "player-link"
+    if (event.target.classList.contains("player-link")) {
+
+      var modalElement = document.getElementById(event.target.getAttribute("data-target"));
+
+      // Check if the modal element exists
+      if (modalElement) {
+        modalElement.style.display = "block";
+      }
+    }
+  });
+});
