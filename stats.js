@@ -17,13 +17,11 @@ function append_json(data) {
 
     var tr = document.createElement("tr");
     
-
     //embed link in name
     var aTag = document.createElement("a");
     aTag.setAttribute("href", "#!");
     aTag.setAttribute("class", "player-link");
     aTag.setAttribute("data-target", "modal" + object.Player.replace(/\s+/g, ''));
-    
     aTag.textContent = object.Player;
     console.log(aTag);
 
