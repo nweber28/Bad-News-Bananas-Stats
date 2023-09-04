@@ -16,10 +16,22 @@ function append_json(data) {
         : document.getElementById("playerStats");
 
     var tr = document.createElement("tr");
-    tr.innerHTML =
-      "<td>" +
-      object.Player +
-      "</td>" +
+    
+
+    //embed link in name
+    var aTag = document.createElement("a");
+    aTag.setAttribute("href", "#!");
+    aTag.setAttribute("class", "player-link");
+    aTag.setAttribute("data-target", "modal" + object.Player.replace(/\s+/g, ''));
+    
+    aTag.textContent = object.Player;
+    console.log(aTag);
+
+    var tdTest = document.createElement("td");
+    tdTest.appendChild(aTag);
+
+    tr.appendChild(tdTest);
+    tr.innerHTML +=
       "<td>" +
       object.Games +
       "</td>" +
