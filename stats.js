@@ -8,8 +8,13 @@ $(document).ready(function () {
 });
 
 function append_json(data) {
-  var table = document.getElementById("playerStats");
+  // var table = document.getElementById("playerStats");
   data.forEach(function (object) {
+    const table =
+      object.Number == "sub"
+        ? document.getElementById("subStats")
+        : document.getElementById("playerStats");
+
     var tr = document.createElement("tr");
     tr.innerHTML =
       "<td>" +
