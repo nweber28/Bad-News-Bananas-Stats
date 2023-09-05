@@ -97,3 +97,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+const closeBtns = document.getElementsByClassName('close-button');
+
+for(let i = 0; i < closeBtns.length; i++) {
+  closeBtns[i].addEventListener('click', () => {
+    closeBtns[i].parentNode.parentNode.style.display = "none";
+  })
+}
+
