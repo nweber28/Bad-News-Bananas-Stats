@@ -1,4 +1,6 @@
-//place all JSON objects into object array
+// This Script parses JSON stats and dynamically adds them into HTML
+
+// place all JSON objects into object array
 $(document).ready(function () {
   $.getJSON("bnbStats.json", function (data) {
     append_json(data);
@@ -8,16 +10,10 @@ $(document).ready(function () {
 });
 
 function append_json(data) {
-  // var table = document.getElementById("playerStats");
   data.forEach(function (object) {
-    const table =
-      object.Number == "sub"
-        ? document.getElementById("subStats")
-        : document.getElementById("playerStats");
-
     var tr = document.createElement("tr");
 
-    //embed link in name if not sub
+    // embed link in name if not sub
     if (object.Number != "sub") {
       var aTag = document.createElement("a");
       aTag.setAttribute("href", "#!");
@@ -81,6 +77,12 @@ function append_json(data) {
       "<td>" +
       object.OPS +
       "</td>";
+
+    // Places sub or regular in correct table
+    const table =
+      object.Number == "sub"
+        ? document.getElementById("subStats")
+        : document.getElementById("playerStats");
     table.appendChild(tr);
   });
 }
@@ -100,6 +102,7 @@ document.addEventListener("click", function (event) {
   }
 });
 
+// Add event listener for close buttons on popup stats
 const closeBtns = document.getElementsByClassName("close-button");
 
 for (let i = 0; i < closeBtns.length; i++) {
