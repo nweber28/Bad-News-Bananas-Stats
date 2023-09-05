@@ -1,16 +1,3 @@
-document.getElementById('player-Fearigo-link').addEventListener('click', function(e) {
-    e.preventDefault();
-    document.getElementById('player-Fearigo-modal').classList.add('active');
-});
-
-document.getElementById('player-Fearigo-modal-close').addEventListener('click', function(e) {
-    e.preventDefault();
-    document.getElementById('player-Fearigo-modal').classList.remove('active');
-});
-
-
-
-
 let modals = document.getElementsByClassName('modal');
 let btns = document.getElementsByClassName("player-link");
 let spans = document.getElementsByClassName("close-button");
