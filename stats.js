@@ -16,26 +16,25 @@ function append_json(data) {
         : document.getElementById("playerStats");
 
     var tr = document.createElement("tr");
-    
+
     //embed link in name if not sub
-    if(object.Number != "sub") {
+    if (object.Number != "sub") {
       var aTag = document.createElement("a");
       aTag.setAttribute("href", "#!");
       aTag.setAttribute("class", "player-link");
-      aTag.setAttribute("data-target", "modal" + object.Player.replace(/\s+/g, ''));
+      aTag.setAttribute(
+        "data-target",
+        "modal" + object.Player.replace(/\s+/g, "")
+      );
       aTag.textContent = object.Player;
 
       var td = document.createElement("td");
       td.appendChild(aTag);
       tr.appendChild(td);
-    } 
-    else {
-      tr.innerHTML += 
-      "<td>" +
-      object.Player +
-      "</td>"
+    } else {
+      tr.innerHTML += "<td>" + object.Player + "</td>";
     }
-   
+
     tr.innerHTML +=
       "<td>" +
       object.Games +
@@ -86,25 +85,25 @@ function append_json(data) {
   });
 }
 
-  // Add a click event listener to the document
-  document.addEventListener("click", function (event) {
-    // Check if the clicked element has the class "player-link"
-    if (event.target.classList.contains("player-link")) {
+// Add a click event listener to the document
+document.addEventListener("click", function (event) {
+  // Check if the clicked element has the class "player-link"
+  if (event.target.classList.contains("player-link")) {
+    var modalElement = document.getElementById(
+      event.target.getAttribute("data-target")
+    );
 
-      var modalElement = document.getElementById(event.target.getAttribute("data-target"));
-
-      // Check if the modal element exists
-      if (modalElement) {
-        modalElement.style.display = "block";
-      }
+    // Check if the modal element exists
+    if (modalElement) {
+      modalElement.style.display = "block";
     }
-  });
+  }
+});
 
-const closeBtns = document.getElementsByClassName('close-button');
+const closeBtns = document.getElementsByClassName("close-button");
 
-for(let i = 0; i < closeBtns.length; i++) {
-  closeBtns[i].addEventListener('click', () => {
+for (let i = 0; i < closeBtns.length; i++) {
+  closeBtns[i].addEventListener("click", () => {
     closeBtns[i].parentNode.parentNode.style.display = "none";
-  })
+  });
 }
-
