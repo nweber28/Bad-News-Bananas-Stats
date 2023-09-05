@@ -17,21 +17,25 @@ function append_json(data) {
 
     var tr = document.createElement("tr");
     
-    //embed link in name
-    var aTag = document.createElement("a");
-    aTag.setAttribute("href", "#!");
-    aTag.setAttribute("class", "player-link");
-    aTag.setAttribute("data-target", "modal" + object.Player.replace(/\s+/g, ''));
-    aTag.textContent = object.Player;
-    aTag.addEventListener("click", function(event) {
-      // Your click event handling code goes here
-      console.log("Anchor clicked!"); // Replace with your actual code
-    });
+    //embed link in name if not sub
+    if(object.Number != "sub") {
+      var aTag = document.createElement("a");
+      aTag.setAttribute("href", "#!");
+      aTag.setAttribute("class", "player-link");
+      aTag.setAttribute("data-target", "modal" + object.Player.replace(/\s+/g, ''));
+      aTag.textContent = object.Player;
 
-    var tdTest = document.createElement("td");
-    tdTest.appendChild(aTag);
-
-    tr.appendChild(tdTest);
+      var td = document.createElement("td");
+      td.appendChild(aTag);
+      tr.appendChild(td);
+    } 
+    else {
+      tr.innerHTML += 
+      "<td>" +
+      object.Player +
+      "</td>"
+    }
+   
     tr.innerHTML +=
       "<td>" +
       object.Games +
@@ -82,7 +86,6 @@ function append_json(data) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
   // Add a click event listener to the document
   document.addEventListener("click", function (event) {
     // Check if the clicked element has the class "player-link"
@@ -96,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
-});
 
 const closeBtns = document.getElementsByClassName('close-button');
 
