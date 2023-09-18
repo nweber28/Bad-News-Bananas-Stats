@@ -1,13 +1,8 @@
 // This Script parses JSON stats and dynamically adds them into HTML
 
-// place all JSON objects into object array
-$(document).ready(function () {
-  $.getJSON("bnbStats.json", function (data) {
-    append_json(data);
-  }).fail(function () {
-    console.log("fail");
-  });
-});
+fetch('./bnbStats.json')
+    .then((response) => response.json())
+    .then((json) => append_json(json));
 
 function append_json(data) {
   data.forEach(function (object) {
